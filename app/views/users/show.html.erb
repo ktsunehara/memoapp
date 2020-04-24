@@ -1,0 +1,6 @@
+<h1>マイページ</h1>
+<% @memos.each do |memo| %>
+    <p><%= memo.title %></p>
+    <p><%= memo.content %></p>
+    <p><%= memo.categry_id %></p>
+<% end %>

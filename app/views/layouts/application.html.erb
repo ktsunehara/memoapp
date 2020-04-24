@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Devise418</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <%= link_to "トップページ", memos_path %>
+      <%= link_to "メモ投稿画面", new_memo_path %>
+      <%= link_to "マイページへ", user_path(current_user.id) %>
+    <% else %>
+      <%= link_to "ログイン", new_user_session_path, class:"post" %>
+      <%= link_to "新規登録", new_user_registration_path, class:"post" %>
+    <% end %>
+    <br><br>
+    <% if flash[:notice] %>
+      <h2><%= flash[:notice] %></h2>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

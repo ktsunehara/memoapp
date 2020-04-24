@@ -1,0 +1,15 @@
+<h1>メモ一覧</h1><hr>
+<% if user_signed_in? %>
+  <% @memos.each do |memo| %>
+    <p><%= memo.title %></p>
+    <p><%= memo.content %></p>
+    <p>カテゴリID:<%= memo.category_id %></p>
+    <%= link_to "編集", edit_memo_path(memo.id) %>
+    <%= link_to "削除", memo_path(memo.id), method: :delete %>
+<hr>
+  <% end %>
+    <% else %>
+    <p>ログインしてください</p>
+    <%= link_to "ログイン", new_user_session_path, class:"post" %>
+    <%= link_to "新規登録", new_user_registration_path, class:"post" %>
+<% end %>

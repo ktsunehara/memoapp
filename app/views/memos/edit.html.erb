@@ -1,0 +1,17 @@
+<h1>メモ編集フォーム</h1>
+
+<%= form_with model:@memo,local:true do |f| %>
+  <% @memo.errors.full_messages.each do |error_message| %>
+    <h3><%= error_message %></h3>
+  <% end %>
+  
+  <%= label_tag "memo-title", "メモのタイトルを入力してください:" %>
+  <%= f.text_field :title,value: @memo.title, id:"memo-title" %>
+<br><br>
+  <%= label_tag "memo-content", "メモの本文を入力してください:" %>
+  <%= f.text_area :content, value: @memo.content,id:"memo-content" %>
+<br><br>
+  <%= label_tag "memo-category_id", "カテゴリーを入力してください:" %>
+  <%= f.text_field :category_id ,value: @memo.category_id, id:"memo-category_id" %>
+  <%= f.submit "送信" %>
+<% end %>
